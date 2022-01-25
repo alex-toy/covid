@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>France - Vue d'ensemble</ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment value="paid" (ionChange)="changeMode($event)">
+    <ion-segment-button value="list">
+      <ion-label>Liste</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="graph">
+      <ion-label>Graphique</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <app-graph 
+    *ngIf="mode == 'graph'"
+    [records]="records">
+  </app-graph>
+
+  <ion-list *ngIf="mode == 'list'">
+    <ion-item
+      *ngFor="let record of currentRecord"
+      [routerLink]="['/records', 'select', record.recordid]">
+      <ion-label> {{ record.fields.date }} </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid *ngIf="mode == 'list'">
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full"
+        (click)="onSelectPage(1)">
+        First</ion-button>
+      </ion-col>
+      <ion-col *ngFor="let i of buttonRange;">
+        <ion-button expand="full"
+        (click)="onSelectPage(i)">
+        {{i}}</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full"
+        (click)="onSelectPage(buttonRange[buttonRange.length - 1])">
+        Last</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+
+

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/records"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isLoading ? 'Loading...' : record.fields.date }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="record">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col>
+        <p class="ion-text-center">Retours à domicile : {{ record.fields.tot_recovered }}</p>
+        <p class="ion-text-center">Cas confirmés : {{ record.fields.tot_positive }}</p>
+        <p class="ion-text-center">Décès à l'hôpital : {{ record.fields.tot_death_hosp }}</p>
+        <p class="ion-text-center">Réanimations : {{ record.fields.tot_icu }}</p>
+        <p class="ion-text-center">Nouveaux patients hospitalisés : {{ record.fields.count_new_hosp }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

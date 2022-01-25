@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/places"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isLoading ? 'Loading...' : place.fields.reg_name }}</ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding" *ngIf="place">
+    <ion-row>
+      <ion-col>
+        <h1 class="ion-text-center">{{ place.fields.dep_name }}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h1 class="ion-text-center">{{ place.fields.reg_name }}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h3 class="ion-text-center">{{ place.fields.name }}</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="place.fields.opening_date">
+      <ion-col>
+        <h3 class="ion-text-center">Date d'ouverture : {{ place.fields.opening_date }}</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="place.fields.closing_date">
+      <ion-col>
+        <h3 class="ion-text-center">Date de fermeture : {{ place.fields.closing_date }}</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <app-location-picker
+          [coordinates]="{lat: place.fields.geo_point_2d[0], lng: place.fields.geo_point_2d[1]}"
+        ></app-location-picker>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

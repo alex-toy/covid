@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Livraisons de vaccins {{regionName}}</ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-button expand="round" color="success" 
+    (click)="showModal()">  
+    Paramètres de sélection 
+  </ion-button>
+
+  <ion-segment value="paid" (ionChange)="changeMode($event)">
+    <ion-segment-button value="list">
+      <ion-label>Liste</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="graph">
+      <ion-label>Graphique</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <app-barplot 
+    *ngIf="mode == 'graph'"
+    [deliveries]="deliveries">
+  </app-barplot>
+
+  <ion-list *ngIf="mode == 'list'">
+    <ion-item
+      *ngFor="let delivery of currentDeliveries"
+      [routerLink]="['/deliveries', 'select', delivery.recordid]">
+      <ion-label> {{ delivery.fields.reg_name }} </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid *ngIf="mode == 'list'">
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full"
+        (click)="onSelectPage(1)">
+        First</ion-button>
+      </ion-col>
+      <ion-col *ngFor="let i of buttonRange;">
+        <ion-button expand="full"
+        (click)="onSelectPage(i)">
+        {{i}}</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full"
+        (click)="onSelectPage(buttonRange[buttonRange.length - 1])">
+        Last</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+

@@ -1,0 +1,6 @@
+{
+	"appId": "io.emiage.coviddtektor",
+	"appName": "covidDTEKtor",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

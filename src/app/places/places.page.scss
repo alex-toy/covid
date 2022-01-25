@@ -1,0 +1,9 @@
+ion-grid {
+  ion-row:first-child {
+    background-color: red;
+    font-weight: bold;
+  }
+  ion-row:nth-child(even) {
+    background: #dddddd;
+  }
+}

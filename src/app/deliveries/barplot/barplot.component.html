@@ -1,0 +1,42 @@
+<ion-content>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>Nombre total de doses reçues par région</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barChart></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-buttons>
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  
+  <ion-toolbar>
+    
+    <ion-buttons slot="secondary">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-title>Naviguer</ion-title>
+    
+    <ion-buttons slot="primary">
+      <ion-button (click)="goForward()" >
+        <ion-icon slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+  
+  <ion-segment value="paid" (ionChange)="toggleDisplay()">
+    <ion-segment-button value="list">
+      <ion-label>Batons</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="graph">
+      <ion-label>Lignes</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-content>

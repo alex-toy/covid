@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">covidDTEKtor</string>
+    <string name="title_activity_main">covidDTEKtor</string>
+    <string name="package_name">io.emiage.coviddtektor</string>
+    <string name="custom_url_scheme">io.emiage.coviddtektor</string>
+</resources>

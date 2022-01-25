@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/deliveries"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isLoading ? 'Loading...' : delivery.fields.reg_name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="delivery">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col>
+        <h1 class="ion-text-center">{{ delivery.fields.reg_name }}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p class="ion-text-center">{{ delivery.fields.vaccine_type }}</p>
+        <p class="ion-text-center">Totales doses réceptionnées : {{ delivery.fields.received_dose_total }}</p>
+        <p class="ion-text-center">Total flacons réceptionnées : {{ delivery.fields.received_ucd_total }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

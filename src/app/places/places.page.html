@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Lieux de vaccination</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="mode == 'list'">
+    <ion-item
+      *ngFor="let place of currentPlaces"
+      [routerLink]="['/places', place.recordid]">
+      <ion-label> {{ place.fields.dep_name }} </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full"
+        (click)="onSelectPage(1)">
+        First</ion-button>
+      </ion-col>
+      <ion-col *ngFor="let i of buttonRange;">
+        <ion-button expand="full"
+        (click)="onSelectPage(i)">
+        {{i}}</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full"
+        (click)="onSelectPage(buttonRange[buttonRange.length - 1])">
+        Last</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
